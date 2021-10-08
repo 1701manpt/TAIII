@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SÁCH TIẾNG ANH II</title>
+    <link rel="stylesheet" href="http://nghiquan.shop/nghiquan/reset.css">
+    <link rel="stylesheet" href="/../TAII/css.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="header__page">1</div>
+        </div>
+        <div class="iframe">
+            <iframe class="iframe__data--find"
+                src="https://ebooks.helbling-ezone.com/ebook/books/jetstream-american-intermediate-sb-split-a-ebook-2021-ebook-E5xwme1acxLQIgF1K2lDPzF9fsu4xZ/pages/svg/1.svg"
+                frameborder="0">
+            </iframe>
+        </div>
+        <div class="controller">
+            <div class="controller__prev">&#8656;</div>
+            <div class="controller__search">
+                <input type="number" class="controller__search__input" value="1">
+            </div>
+            <div class="controller__next">&#8658;</div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var controller = function () {
+                var start = 1
+                var end = 79
+                var page = document.querySelector('.header__page')
+                var controllerPrev = document.querySelector('.controller__prev')
+                var controllerNext = document.querySelector('.controller__next')
+                var controllerSearch = document.querySelector('.controller__search__input')
+                var main = document.querySelector('.main')
+                var iframe = document.querySelector('.iframe')
+                var not = document.querySelectorAll(':not(.controller__search, .controller__search__input)')
+                function getIndex() {
+                    var i = iframe.querySelector('iframe')
+                    var src = i.getAttribute('src')
+                    var index = 1
+                    if (src.length == 152) {
+                        index = src.slice(147, 148)
+                    }
+                    if (src.length == 153) {
+                        index = src.slice(147, 149)
+                    }
+
+                    return Number(index)
+                }
+
+                controllerNext.onclick = function () {
+                    if (getIndex() == end) {
+                        return
+                    }
+                    var index = getIndex() + 1
+                    renderIframe(index)
+                }
+                controllerPrev.onclick = function () {
+                    if (getIndex() == start) {
+                        return
+                    }
+                    var index = getIndex() - 1
+                    renderIframe(index)
+                }
+                controllerSearch.addEventListener('click', function () {
+                    var index = controllerSearch.value
+                    renderIframe(index)
+                })
+                controllerSearch.addEventListener('change', function () {
+                    var index = controllerSearch.value
+                    renderIframe(index)
+                })
+                controllerSearch.addEventListener('input', function () {
+                    var index = controllerSearch.value
+                    renderIframe(index)
+                })
+
+                function renderIframe(index) {
+                    if (index == '' || index == getIndex()) {
+                        return
+                    }
+                    if (index < 1 || index > 79) {
+                        alert('Not Find Page: ' + index + '!\n Tài liệu có trang bắt đầu từ 1 đến 79')
+                        controllerSearch.value = page.textContent
+                        return
+                    }
+                    iframe.innerHTML = `
+                    <iframe
+                        class="iframe__data--find"
+                        src="https://ebooks.helbling-ezone.com/ebook/books/jetstream-american-intermediate-sb-split-a-ebook-2021-ebook-E5xwme1acxLQIgF1K2lDPzF9fsu4xZ/pages/svg/${index}.svg"
+                        frameborder="0">
+                    </iframe>
+                    `
+                    page.innerHTML = index
+                }
+
+                not.forEach(function (item) {
+                    this.onclick = function () {
+                        clickNot()
+                    }
+                })
+
+                function clickNot() {
+                    controllerSearch.value = page.textContent
+                }
+            }
+
+            controller()
+        })()
+    </script>
+</body>
+
+</html>
