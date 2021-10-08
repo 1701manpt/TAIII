@@ -92,6 +92,10 @@
                         controllerSearch.value = page.textContent
                         return
                     }
+                    if (index == 2) {
+                        alert('Trang 2 bị lỗi và không chứa tài liệu!')
+                        return
+                    }
                     iframe.innerHTML = `
                     <iframe
                         class="iframe__data--find"
