@@ -33,6 +33,8 @@
     <script>
         (function () {
             var controller = function () {
+                var url = 'https://ebooks.helbling-ezone.com/ebook/books/jetstream-american-intermediate-sb-split-a-ebook-2021-ebook-E5xwme1acxLQIgF1K2lDPzF9fsu4xZ/pages/svg/1.svg'
+                var length = url.length
                 var start = 1
                 var end = 93
                 var page = document.querySelector('.header__page')
@@ -46,11 +48,11 @@
                     var i = iframe.querySelector('iframe')
                     var src = i.getAttribute('src')
                     var index = 1
-                    if (src.length == 152) {
-                        index = src.slice(147, 148)
+                    if (src.length == length) {
+                        index = src.slice(length - 5, length - 4)
                     }
-                    if (src.length == 153) {
-                        index = src.slice(147, 149)
+                    if (src.length == length + 1) {
+                        index = src.slice(length - 5, length - 3)
                     }
 
                     return Number(index)
@@ -88,7 +90,7 @@
                         return
                     }
                     if (index < start || index > end) {
-                        alert('Not Find Page: ' + index + '!\n Tài liệu có trang bắt đầu từ '+start+' đến '+end)
+                        alert('Not Find Page: ' + index + '!\n Tài liệu có trang bắt đầu từ ' + start + ' đến ' + end)
                         controllerSearch.value = page.textContent
                         return
                     }
