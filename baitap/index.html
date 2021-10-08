@@ -17,14 +17,14 @@
         </div>
         <div class="iframe">
             <iframe class="iframe__data--find"
-                src="https://ebooks.helbling-ezone.com/ebook/books/jetstream-american-intermediate-wb-split-a-ebook-2021-4oDYyt6D70TYX3VDd1O8h90KNKjYoPTV/pages/svg/1.svg"
+                src="https://ebooks.helbling-ezone.com/ebook/books/jetstream-american-intermediate-wb-split-a-ebook-2021-4oDYyt6D70TYX3VDd1O8h90KNKjYoPTV/pages/svg/3.svg"
                 frameborder="0">
             </iframe>
         </div>
         <div class="controller">
             <div class="controller__prev">&#8656;</div>
             <div class="controller__search">
-                <input type="number" class="controller__search__input" value="1">
+                <input type="number" class="controller__search__input" value="3">
             </div>
             <div class="controller__next">&#8658;</div>
         </div>
@@ -33,7 +33,9 @@
     <script>
         (function () {
             var controller = function () {
-                var start = 1
+                var url = 'https://ebooks.helbling-ezone.com/ebook/books/jetstream-american-intermediate-wb-split-a-ebook-2021-4oDYyt6D70TYX3VDd1O8h90KNKjYoPTV/pages/svg/1.svg'
+                var length = url.length
+                var start = 3
                 var end = 53
                 var page = document.querySelector('.header__page')
                 var controllerPrev = document.querySelector('.controller__prev')
@@ -46,11 +48,11 @@
                     var i = iframe.querySelector('iframe')
                     var src = i.getAttribute('src')
                     var index = 1
-                    if (src.length == 152) {
-                        index = src.slice(147, 148)
+                    if (src.length == length) {
+                        index = src.slice(length - 5, length - 4)
                     }
-                    if (src.length == 153) {
-                        index = src.slice(147, 149)
+                    if (src.length == length + 1) {
+                        index = src.slice(length - 5, length - 3)
                     }
 
                     return Number(index)
@@ -93,6 +95,7 @@
                         return
                     }
                     if (index == 2) {
+                        console.log(index)
                         alert('Trang 2 bị lỗi và không chứa tài liệu!')
                         return
                     }
