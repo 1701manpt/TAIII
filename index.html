@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SÁCH TIẾNG ANH II</title>
+    <title>SÁCH TIẾNG ANH III</title>
     <link rel="stylesheet" href="http://nghiquan.shop/nghiquan/reset.css">
     <link rel="stylesheet" href="/../TAII/css.css">
 </head>
@@ -34,7 +34,7 @@
         (function () {
             var controller = function () {
                 var start = 1
-                var end = 79
+                var end = 93
                 var page = document.querySelector('.header__page')
                 var controllerPrev = document.querySelector('.controller__prev')
                 var controllerNext = document.querySelector('.controller__next')
@@ -87,8 +87,8 @@
                     if (index == '' || index == getIndex()) {
                         return
                     }
-                    if (index < 1 || index > 79) {
-                        alert('Not Find Page: ' + index + '!\n Tài liệu có trang bắt đầu từ 1 đến 79')
+                    if (index < start || index > end) {
+                        alert('Not Find Page: ' + index + '!\n Tài liệu có trang bắt đầu từ '+start+' đến '+end)
                         controllerSearch.value = page.textContent
                         return
                     }
